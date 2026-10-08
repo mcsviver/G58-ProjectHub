@@ -1,0 +1,21 @@
+{
+  "type": "module",
+  "name": "micron-hero",
+  "version": "1.0.0",
+  "description": "Micron Hero - Frontend + Backend API",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "hero",
+    "api",
+    "express"
+  ],
+  "author": "mcsviver",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
