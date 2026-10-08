@@ -21,8 +21,48 @@ function saveSession(user, channel) {
 function redirectAfterLogin() {
   setTimeout(() => location.href = 'dashboard.html', 700);
 }
+  <form id="regForm" autocomplete="off" style="display:flex;flex-direction:column;gap:10px;">
+    <label>ชื่อ-นามสกุล *</label>
+    <input type="text" id="regName" required />
 
-/* ---------- แทนในแต่ละ form submit ---------- */
+    <label>อีเมล</label>
+    <input type="email" id="regEmail" />
+
+    <label>📸 รูปโปรไฟล์ (ไม่บังคับ)</label>
+    <input type="file" id="regAvatar" accept="image/*" />
+    <div id="regPhotoInfo" class="photo-info" hidden></div>
+
+    <label>รหัสผ่าน *</label>
+    <input type="password" id="regPw" required placeholder="≥ 8 ตัวอักษร" />
+    <div class="strength-bar"><div id="regStrength" class="strength-fill"></div></div>
+
+    <label>ยืนยันรหัสผ่าน *</label>
+    <input type="password" id="regPw2" required />
+
+    <label>หมวด ID</label>
+    <select id="regCat">
+      <option value="USR">USR — ผู้ใช้ทั่วไป</option>
+      <option value="DEV">DEV — นักพัฒนา</option>
+      <option value="ART">ART — ศิลปิน/ดีไซน์</option>
+      <option value="MST">MST — Master</option>
+    </select>
+
+    <label class="checkbox">
+      <input type="checkbox" id="regPublic" checked />
+      เปิดโปรไฟล์สาธารณะ (ให้คนอื่นค้นหาเจอ)
+    </label>
+
+    <button type="submit" class="btn btn-primary btn-block">🚀 สมัครสมาชิก</button>
+    <p id="regError" class="err" hidden></p>
+  </form>
+
+  <div class="auth-fallback">
+    <p>มีบัญชีแล้ว?</p>
+    <a href="login.html" class="btn-link">← เข้าสู่ระบบ</a>
+  </div>
+
+  <div id="regResult" class="auth-result" hidden></div>
+</div>
 
 // idpw
 if (r.ok) { saveSession(r.user, 'idpw');      redirectAfterLogin(); }
@@ -117,7 +157,48 @@ html
 </html>
 A3. js/register.js
 javascript
-/* ============================================================
+  <form id="regForm" autocomplete="off" style="display:flex;flex-direction:column;gap:10px;">
+    <label>ชื่อ-นามสกุล *</label>
+    <input type="text" id="regName" required />
+
+    <label>อีเมล</label>
+    <input type="email" id="regEmail" />
+
+    <label>📸 รูปโปรไฟล์ (ไม่บังคับ)</label>
+    <input type="file" id="regAvatar" accept="image/*" />
+    <div id="regPhotoInfo" class="photo-info" hidden></div>
+
+    <label>รหัสผ่าน *</label>
+    <input type="password" id="regPw" required placeholder="≥ 8 ตัวอักษร" />
+    <div class="strength-bar"><div id="regStrength" class="strength-fill"></div></div>
+
+    <label>ยืนยันรหัสผ่าน *</label>
+    <input type="password" id="regPw2" required />
+
+    <label>หมวด ID</label>
+    <select id="regCat">
+      <option value="USR">USR — ผู้ใช้ทั่วไป</option>
+      <option value="DEV">DEV — นักพัฒนา</option>
+      <option value="ART">ART — ศิลปิน/ดีไซน์</option>
+      <option value="MST">MST — Master</option>
+    </select>
+
+    <label class="checkbox">
+      <input type="checkbox" id="regPublic" checked />
+      เปิดโปรไฟล์สาธารณะ (ให้คนอื่นค้นหาเจอ)
+    </label>
+
+    <button type="submit" class="btn btn-primary btn-block">🚀 สมัครสมาชิก</button>
+    <p id="regError" class="err" hidden></p>
+  </form>
+
+  <div class="auth-fallback">
+    <p>มีบัญชีแล้ว?</p>
+    <a href="login.html" class="btn-link">← เข้าสู่ระบบ</a>
+  </div>
+
+  <div id="regResult" class="auth-result" hidden></div>
+</div>============================================================
    register.js — สมัครสมาชิก + สร้าง ID อัตโนมัติ
    ============================================================ */
 
